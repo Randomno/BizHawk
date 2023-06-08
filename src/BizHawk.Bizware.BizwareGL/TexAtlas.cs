@@ -31,7 +31,7 @@ namespace BizHawk.Bizware.BizwareGL
 			public readonly List<RectangleBinPack.Node> nodes = new List<RectangleBinPack.Node>();
 		}
 
-		public static int MaxSizeBits = 16;
+		private const int MaxSizeBits = 16;
 
 		/// <summary>
 		/// packs the supplied RectItems into an atlas. Modifies the RectItems with x/y values of location in new atlas.
