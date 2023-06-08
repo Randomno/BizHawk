@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Drawing;
+using System.Globalization;
 using BizHawk.Client.Common.FilterManager;
 
 using BizHawk.Bizware.BizwareGL;
@@ -211,7 +212,7 @@ namespace BizHawk.Client.Common.Filters
 
 		private static float FetchFloat(IDictionary<string, string> dict, string key, float @default)
 		{
-			return dict.TryGetValue(key, out var str) ? float.Parse(str) : @default;
+			return dict.TryGetValue(key, out var str) ? float.Parse(str, NumberFormatInfo.InvariantInfo) : @default;
 		}
 
 		private bool FetchBool(IDictionary<string, string> dict, string key, bool @default)

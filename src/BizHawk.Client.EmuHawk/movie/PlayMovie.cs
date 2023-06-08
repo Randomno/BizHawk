@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -81,7 +82,7 @@ namespace BizHawk.Client.EmuHawk
 			e.Item = new ListViewItem(entry.Filename);
 			e.Item.SubItems.Add(entry.SystemID);
 			e.Item.SubItems.Add(entry.GameName);
-			e.Item.SubItems.Add(entry.TimeLength.ToString(@"hh\:mm\:ss\.fff"));
+			e.Item.SubItems.Add(entry.TimeLength.ToString(@"hh\:mm\:ss\.fff", DateTimeFormatInfo.InvariantInfo));
 		}
 
 		private void Run()
@@ -327,7 +328,7 @@ namespace BizHawk.Client.EmuHawk
 							.Append(_movieList[index].Filename).Append('\t')
 							.Append(_movieList[index].SystemID).Append('\t')
 							.Append(_movieList[index].GameName).Append('\t')
-							.Append(_movieList[index].TimeLength.ToString(@"hh\:mm\:ss\.fff"))
+							.Append(_movieList[index].TimeLength.ToString(@"hh\:mm\:ss\.fff", DateTimeFormatInfo.InvariantInfo))
 							.AppendLine();
 					}
 
