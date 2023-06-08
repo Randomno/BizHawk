@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -1112,7 +1113,7 @@ namespace BizHawk.Client.EmuHawk
 					{
 						if (ie.LogicalButton.Button.Length == 1)
 						{
-							var c = ie.LogicalButton.Button.ToLower()[0];
+							var c = ie.LogicalButton.Button.ToLowerInvariant()[0];
 							if ((c >= 'a' && c <= 'z') || c == ' ')
 							{
 								SendAltKeyChar(c);
@@ -1311,7 +1312,7 @@ namespace BizHawk.Client.EmuHawk
 			using (var bb = Config.ScreenshotCaptureOsd ? CaptureOSD() : MakeScreenshotImage())
 			{
 				using var img = bb.ToSysdrawingBitmap();
-				if (Path.GetExtension(path).ToUpper() == ".JPG")
+				if (Path.GetExtension(path).ToUpperInvariant() == ".JPG")
 				{
 					img.Save(fi.FullName, ImageFormat.Jpeg);
 				}
@@ -2451,7 +2452,8 @@ namespace BizHawk.Client.EmuHawk
 				BindingFlags.NonPublic | BindingFlags.InvokeMethod | BindingFlags.Instance,
 				null,
 				MainformMenu,
-				new object/*?*/[] { c });
+				new object/*?*/[] { c },
+				CultureInfo.InvariantCulture);
 
 		public static readonly FilesystemFilterSet ConfigFileFSFilterSet = new(new FilesystemFilter("Config File", new[] { "ini" }))
 		{

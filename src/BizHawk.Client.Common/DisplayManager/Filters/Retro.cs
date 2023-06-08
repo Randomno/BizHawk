@@ -143,7 +143,7 @@ namespace BizHawk.Client.Common.Filters
 						value = value.Substring(0, hash);
 					value = value.Trim();
 				}
-				dict[key.ToLower()] = value;
+				dict[key.ToLowerInvariant()] = value;
 			}
 
 			// process the keys
@@ -223,7 +223,7 @@ namespace BizHawk.Client.Common.Filters
 		{
 			if (value == "1") return true;
 			if (value == "0") return false;
-			value = value.ToLower();
+			value = value.ToLowerInvariant();
 			if (value == "true") return true;
 			if (value == "false") return false;
 			throw new InvalidOperationException("Unparsable bool in CGP file content");
